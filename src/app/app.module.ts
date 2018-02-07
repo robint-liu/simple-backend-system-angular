@@ -22,6 +22,8 @@ import LeaveGuard from './guards/leave';
 import ResolveGuard from './guards/resolve';
 import { ListComponent } from './pages/products/list/list.component';
 import { SearchComponent } from './pages/products/search/search.component';
+import {HttpModule} from '@angular/http';
+import { ProductsfilterPipe } from './pipes/productsfilter.pipe';
 
 const routes: Routes = [{
     path: '',
@@ -64,10 +66,12 @@ const routes: Routes = [{
     CDetailsComponent,
     ListComponent,
     SearchComponent,
+    ProductsfilterPipe,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes) // 引入路由模块RouterModule
   ],

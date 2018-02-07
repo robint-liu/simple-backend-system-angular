@@ -13,14 +13,16 @@ export class DetailsComponent implements OnInit {
   constructor(private router: Router, route: ActivatedRoute, private productService: ProductService) {
     route.params.subscribe((params) => {
       this.id = parseInt(params.id, 10);
-      this.product = this.productService.getProductById(this.id);
+      const stream = this.productService.getProductById(this.id);
+      stream.subscribe((res) => {
+        this.product = res.data.product;
+      });
     });
   }
   ngOnInit() {
   }
   private handleSave(name, desc) {
-    this.productService.changeName(this.id, name);
-    this.productService.changeDesc(this.id, desc);
+    this.productService.changeinfo(this.id, name, desc);
     this.router.navigate(['/products']);
   }
 }
