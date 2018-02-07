@@ -1,0 +1,8 @@
+<p>
+  <i
+    *ngFor="let item of stars; let index= index;"
+    class="fa fa-fw fa-star"
+    [class.fa-star-o]="index >= star"
+    (click)="handleClick(index + 1)"
+  ></i>
+</p>
