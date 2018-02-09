@@ -2,25 +2,36 @@
   <div class="box-header with-border">
     <h3 class="box-title">产品详情</h3>
   </div>
-  <div class="form-horizontal">
+  <form class="form-horizontal" #form="ngForm" (ngSubmit)="handleSave(form.value)">
     <div class="box-body">
       <div class="form-group">
         <label for="inputEmail3" class="col-sm-2 control-label">产品名称</label>
-
         <div class="col-sm-10">
-          <input type="text" #name [value]="product.name" class="form-control" id="inputEmail3" placeholder="请输入产品名称">
+          <input type="text" ngModel name="productName" [value]="product.name" class="form-control" id="inputEmail3" placeholder="请输入产品名称">
+          <span [hidden]="valid">产品名称不能为空</span>
         </div>
       </div>
       <div class="form-group">
         <label for="inputPassword3" class="col-sm-2 control-label">产品描述</label>
-
         <div class="col-sm-10">
-          <input type="text" #desc [value]="product.desc" class="form-control" id="inputPassword3" placeholder="请输入产品描述">
+          <input type="text" ngModel name="productDesc" [value]="product.desc" class="form-control" id="inputPassword3" placeholder="请输入产品描述">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword4" class="col-sm-2 control-label">价格</label>
+        <div class="col-sm-10" ngModelGroup="password">
+          <input type="text" ngModel name="price" [value]="product.price" class="form-control" id="inputPassword4" placeholder="请输入产品价格">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword5" class="col-sm-2 control-label">确认价格</label>
+        <div class="col-sm-10" ngModelGroup="password">
+          <input type="text" ngModel name="reprice" [value]="product.price" class="form-control" id="inputPassword5" placeholder="请输入产品价格">
         </div>
       </div>
     </div>
     <div class="box-footer">
-      <button type="submit" class="btn btn-info pull-right" (click)="handleSave(name.value, desc.value)">保存</button>
+      <button type="submit" class="btn btn-info pull-right">保存</button>
     </div>
-  </div>
+  </form>
 </div>

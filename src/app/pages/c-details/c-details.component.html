@@ -1,26 +1,37 @@
-<div class="box box-info">
+<div class="box box-info" xmlns="http://www.w3.org/1999/html">
   <div class="box-header with-border">
     <h3 class="box-title">客户详情</h3>
   </div>
-  <div class="form-horizontal">
+  <form class="form-horizontal" [formGroup]="customerForm" (submit)="handleSave()" >
     <div class="box-body">
       <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">BorthDay：</label>
-
+        <label for="inputEmail3" class="col-sm-2 control-label">Name：</label>
         <div class="col-sm-10">
-          <input type="text" #birthday [value]="customer.birthday" class="form-control" id="inputEmail3" placeholder="请输入客户生日">
+          <input type="text" [value]="customer.name" class="form-control" id="inputEmail3" placeholder="请输入客户姓名" formControlName="customerName" >
+          <span [hidden]="customerForm.get('customerName').pristine || customerForm.get('customerName').valid" >客户姓名不能为空！</span>
         </div>
       </div>
       <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">PhoneNumber：</label>
-
+        <label for="inputPassword3" class="col-sm-2 control-label">Sex：</label>
         <div class="col-sm-10">
-          <input type="text" #phonenumber [value]="customer.phonenumber" class="form-control" id="inputPassword3" placeholder="请输入客户电话号码">
+          <input type="text" [value]="customer.sex" class="form-control" id="inputPassword3" placeholder="请输入客户性别" formControlName="customerSex" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputEmail4" class="col-sm-2 control-label">BorthDay：</label>
+        <div class="col-sm-10">
+          <input type="text" [value]="customer.birthday" class="form-control" id="inputEmail4" placeholder="请输入客户生日"  formControlName="customerBirthday" >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword4" class="col-sm-2 control-label">PhoneNumber：</label>
+        <div class="col-sm-10">
+          <input type="text" [value]="customer.phonenumber" class="form-control" id="inputPassword4" placeholder="请输入客户电话号码" formControlName="customerPhonenumber" >
         </div>
       </div>
     </div>
     <div class="box-footer">
       <button type="submit" class="btn btn-info pull-right" (click)="handleSave(birthday.value, phonenumber.value)">保存</button>
     </div>
-  </div>
+  </form>
 </div>

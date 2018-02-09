@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService, Product} from '../../services/product.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-details',
@@ -19,10 +20,20 @@ export class DetailsComponent implements OnInit {
       });
     });
   }
+  private valid = true;
   ngOnInit() {
   }
-  private handleSave(name, desc) {
-    this.productService.changeinfo(this.id, name, desc);
-    this.router.navigate(['/products']);
+  private handleSave(value) {
+    console.log(value);
+    if (value.productName === '') {
+      this.valid = false;
+    } else {
+      this.valid = true;
+      const resolution = this.productService.changeinfo(this.id, value.productName, value.productDesc);
+      resolution.subscribe((res) => {
+        confirm('保存成功！即将跳转页面···');
+        this.router.navigate(['/products']);
+      });
+    }
   }
 }

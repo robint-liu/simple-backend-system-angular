@@ -21,6 +21,9 @@ export class ListComponent implements OnInit {
   }
   ngOnInit() {
   }
+  eret() {
+    // console.log(123);
+  }
   private handleStarChange(star, index): void {
     this.products[index].stars = star;
   }
