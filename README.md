@@ -1,4 +1,5 @@
-# AngularApp
+# 后台管理系统
+### 早期使用angular上手的项目
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
 

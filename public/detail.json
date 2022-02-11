@@ -1,0 +1,13 @@
+{
+	"ret": true,
+	"data": {
+		"product": {
+			"id": 1,
+			"name": "李维斯裤子",
+			"desc": "产品1介绍",
+			"category": "裤子",
+			"stars": 5,
+			"price": 100
+		}
+	}
+}
